@@ -1,9 +1,17 @@
 import assets from '../../assets/assets'
 import './LeftSideBar.css'
 import { useNavigate } from 'react-router-dom'
+import {AppContext} from '../../context/AppContext'
+import { useContext } from 'react';
 
 function LeftSideBar() {
   const navigate = useNavigate();
+  const {userData} = useContext(AppContext) 
+
+  const handleLogOut = () =>{
+    localStorage.removeItem("auth-token");
+    navigate('/')
+  }
   return (
     <div className='ls'>
       <div className="ls-top">
@@ -14,7 +22,7 @@ function LeftSideBar() {
             <div className="sub-menu">
               <p onClick={()=>navigate('/profile')}>Edit Profile</p>
               <hr />
-              <p>Logout</p>
+              <p onClick={handleLogOut}>Logout</p>
             </div>
           </div>
         </div>
@@ -26,10 +34,10 @@ function LeftSideBar() {
       <div className="ls-list">
         {Array(12).fill("").map((item, index) => (
           <div key={index} className="friends">
-          <img src={assets.profile_img} alt="" />
+          <img src={userData ? userData?.avatar :assets.profile_img} alt="" />
           <div>
-            <p>Richard Sanford</p>
-            <span>Hello, How are you? </span>
+            <p>{userData ? userData?.name : "Richard Sanford"}</p>
+            <span>{userData ? userData?.bio :"Hello, How are you? "}</span>
           </div>
         </div>
         ))}

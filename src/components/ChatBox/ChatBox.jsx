@@ -11,7 +11,7 @@ function ChatBox() {
     <div className='chat-box'>
       <div className="chat-user">
         <img src={assets.profile_img} alt="" />
-        <p>Richard Sanford <img src={assets.green_dot} className='dot' alt="" /></p>
+        <p>{userData ? userData?.name: "Richard Sanford"} <img src={assets.green_dot} className='dot' alt="" /></p>
         <img src={assets.help_icon} className='help' alt="" />
       </div>
 
@@ -19,7 +19,7 @@ function ChatBox() {
         <div className="s-msg">
           <p className='msg'> Lorem ipsum is placeholder text commonly used in .... </p>
           <div>
-            <img src={assets.profile_img} alt="" />
+            <img src={userData ? userData?.avatar: assets.profile_img} alt="" />
             <p>2:30pm</p>
           </div>
         </div>
