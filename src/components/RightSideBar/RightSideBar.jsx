@@ -1,14 +1,16 @@
 import assets from '../../assets/assets'
 import './RightSideBar.css'
+import { useContext } from 'react'
+import { AppContext } from '../../context/AppContext'
 
 function RightSideBar() {
+  const {userData} = useContext(AppContext);
   return (
     <div className='rs'>
         <div className="rs-profile">
-          <img src={assets.profile_img} alt="" />
-          <h3>Richard Sanford <img src={assets.green_dot} className='dot' alt="" /></h3>
-          <p>Hey, There i am Richard Sanford using chat app</p>
-
+          <img src={userData? userData?.avatar :assets.profile_img} alt="" />
+          <h3>{userData ? userData?.name : "Richard Sanford" }<img src={assets.green_dot} className='dot' alt="" /></h3>
+          <p>{userData? userData?.bio :"Hey, There i am Richard Sanford using chat app"}</p>
         </div>
         <hr />
         <div className="rs-media">
