@@ -5,7 +5,7 @@ import { AppContext } from '../../context/AppContext'
 
 function ChatBox() {
   const { userData } = useContext(AppContext);
-  console.log(useContext)
+  console.log(userData)
 
   return (
     <div className='chat-box'>

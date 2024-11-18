@@ -26,7 +26,7 @@ function Login() {
             if (response.data.message) {  
                 console.log('Success');  
                 localStorage.setItem('auth-token', response.data.accessToken); // Uncomment this  
-                // window.location.replace('/chat'); // Redirect after signup/login  
+                window.location.replace('/chat'); // Redirect after signup/login  
             } else {  
                 alert(response.data.error);  
                 console.log('Error:', response.data.error);  

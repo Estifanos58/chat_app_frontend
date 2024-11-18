@@ -1,13 +1,16 @@
-import React from "react";
-import ReactDOM from "react-dom";
-import App from "./App";
-import AppProvider from "./context/AppContext";
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App.jsx'
+import './index.css'
+import { BrowserRouter } from 'react-router-dom'
+import AppProvider from './context/AppContext.jsx'
 
-ReactDOM.render(
-    <React.StrictMode>
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <BrowserRouter>
         <AppProvider>
-            <App />
+             <App />
         </AppProvider>
-    </React.StrictMode>,
-    document.getElementById("root")
-);
+    </BrowserRouter>
+  </StrictMode>,
+)
